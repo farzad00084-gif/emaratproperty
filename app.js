@@ -102,6 +102,12 @@
       'account.phone': 'Office phone', 'account.officeDistrict': 'Office district', 'account.agencyAbout': 'About the agency',
       'account.agencyAboutPh': 'What kinds of homes do you represent?', 'account.local': 'Your account keeps your listings and conversations together.',
       'account.agencyNote': 'Agency accounts get a workspace name, license details, and a team contact on every listing.',
+      'account.error.fix': 'Please correct the fields marked below.',
+      'account.error.name': 'Enter your full name.', 'account.error.agency': 'Enter your agency name.',
+      'account.error.license': 'Enter your agency registration number.', 'account.error.phone': 'Enter a valid office phone number.',
+      'account.error.email': 'Enter a valid email address.', 'account.error.password': 'Use at least 8 characters.',
+      'account.error.confirm': 'The passwords do not match.', 'account.error.duplicate': 'This email already has an account.',
+      'account.error.login': 'Email or password is incorrect.',
       'dash.kicker': 'My listings', 'dash.agencyKicker': 'Agency workspace', 'dash.title': 'Your homes', 'dash.new': 'New listing',
       'dash.drafts': 'Drafts', 'dash.review': 'In review', 'dash.live': 'Live', 'dash.returned': 'Returned', 'dash.all': 'All',
       'dash.nothing': 'Nothing here yet', 'dash.create': 'Create a listing to start your workspace.',
@@ -197,6 +203,12 @@
       'account.phone': 'تلفن دفتر', 'account.officeDistrict': 'ناحیهٔ دفتر', 'account.agencyAbout': 'دربارهٔ اداره',
       'account.agencyAboutPh': 'چه نوع ملک‌هایی را نمایندگی می‌کنید؟', 'account.local': 'حساب شما ملک‌ها و گفتگوهایتان را در یک‌جا نگه می‌دارد.',
       'account.agencyNote': 'حساب اداره نام فضای کاری، جزئیات جواز و تماس تیم را در هر ملک نشان می‌دهد.',
+      'account.error.fix': 'لطفاً موارد مشخص‌شده را اصلاح کنید.',
+      'account.error.name': 'نام کامل خود را وارد کنید.', 'account.error.agency': 'نام اداره را وارد کنید.',
+      'account.error.license': 'شمارهٔ ثبت اداره را وارد کنید.', 'account.error.phone': 'شمارهٔ تلفن معتبر وارد کنید.',
+      'account.error.email': 'ایمیل معتبر وارد کنید.', 'account.error.password': 'رمز عبور باید دست‌کم ۸ حرف باشد.',
+      'account.error.confirm': 'رمزهای عبور یکسان نیستند.', 'account.error.duplicate': 'برای این ایمیل قبلاً حساب ساخته شده است.',
+      'account.error.login': 'ایمیل یا رمز عبور درست نیست.',
       'dash.kicker': 'ملک‌های من', 'dash.agencyKicker': 'فضای کاری اداره', 'dash.title': 'خانه‌های شما', 'dash.new': 'ملک جدید',
       'dash.drafts': 'پیش‌نویس‌ها', 'dash.review': 'در بررسی', 'dash.live': 'فعال', 'dash.returned': 'برگشتی', 'dash.all': 'همه',
       'dash.nothing': 'هنوز چیزی نیست', 'dash.create': 'برای شروع فضای کاری یک ملک بسازید.',
@@ -292,6 +304,12 @@
       'account.phone': 'د دفتر تلیفون', 'account.officeDistrict': 'د دفتر ناحیه', 'account.agencyAbout': 'د ادارې په اړه',
       'account.agencyAboutPh': 'کوم ډول کورونه استازیتوب کوئ؟', 'account.local': 'ستاسو حساب ستاسو ملکونه او خبرې اترې په یوه ځای کې ساتي.',
       'account.agencyNote': 'د ادارې حساب کاري ځای، د جواز جزئیات او د ټیم اړیکه په هر ملک کې ښيي.',
+      'account.error.fix': 'مهرباني وکړئ لاندې نښه شوي ځایونه سم کړئ.',
+      'account.error.name': 'خپل بشپړ نوم ولیکئ.', 'account.error.agency': 'د ادارې نوم ولیکئ.',
+      'account.error.license': 'د ادارې د ثبت شمېره ولیکئ.', 'account.error.phone': 'د دفتر سمه شمېره ولیکئ.',
+      'account.error.email': 'سم ایمیل ولیکئ.', 'account.error.password': 'پټنوم لږ تر لږه ۸ توري ولري.',
+      'account.error.confirm': 'پټنومونه سره برابر نه دي.', 'account.error.duplicate': 'د دې ایمیل لپاره حساب شته.',
+      'account.error.login': 'ایمیل یا پټنوم ناسم دی.',
       'dash.kicker': 'زما ملکونه', 'dash.agencyKicker': 'د ادارې کاري ځای', 'dash.title': 'ستاسو کورونه', 'dash.new': 'نوی ملک',
       'dash.drafts': 'مسودې', 'dash.review': 'په کتنه کې', 'dash.live': 'ژوندی', 'dash.returned': 'بیرته شوی', 'dash.all': 'ټول',
       'dash.nothing': 'لا هیڅ نشته', 'dash.create': 'د کاري ځای پیل لپاره ملک جوړ کړئ.',
@@ -356,7 +374,15 @@
     const sel = $('#langSelect');
     if (sel) {
       sel.value = lang;
-      sel.setAttribute('aria-label', t('lang.label'));
+      const picker = $('[data-lang-picker]');
+      const trigger = picker?.querySelector('.lang-trigger');
+      trigger?.setAttribute('aria-label', t('lang.label'));
+      picker?.querySelector('.dd-label')?.replaceChildren(document.createTextNode(LANGS[lang].label));
+      picker?.querySelectorAll('.dd-opt').forEach((option) => {
+        const active = option.dataset.value === lang;
+        option.classList.toggle('is-on', active);
+        option.setAttribute('aria-selected', String(active));
+      });
     }
     document.querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n); });
     document.querySelectorAll('[data-i18n-aria]').forEach((el) => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
@@ -785,12 +811,41 @@
 
   function bind(name) {
     if (name === 'account') {
-      $('#authForm')?.addEventListener('submit', handleAuth);
-      $('#authForm')?.addEventListener('change', (e) => {
-        if (e.target.name !== 'role') return;
+      const form = $('#authForm');
+      form?.addEventListener('submit', handleAuth);
+      form?.addEventListener('input', (e) => {
+        const fieldName = e.target.name;
+        const message = fieldName && form.querySelector(`[data-auth-error="${fieldName}"]`);
+        if (!message) return;
+        message.textContent = '';
+        const control = e.target.type === 'hidden' ? e.target.closest('[data-dd]')?.querySelector('.dd-trigger') : e.target;
+        control?.removeAttribute('aria-invalid');
+        if (!form.querySelector('[aria-invalid="true"]')) $('#authMsg').innerHTML = '';
+      });
+      form?.addEventListener('change', (e) => {
+        if (e.target.name !== 'role') {
+          const message = e.target.name && form.querySelector(`[data-auth-error="${e.target.name}"]`);
+          if (!message) return;
+          message.textContent = '';
+          const control = e.target.type === 'hidden' ? e.target.closest('[data-dd]')?.querySelector('.dd-trigger') : e.target;
+          control?.removeAttribute('aria-invalid');
+          if (!form.querySelector('[aria-invalid="true"]')) $('#authMsg').innerHTML = '';
+          return;
+        }
         accountRole = e.target.value === 'agency' ? 'agency' : 'individual';
         const fields = $('[data-agency-fields]');
         if (fields) fields.hidden = accountRole !== 'agency';
+        const visual = authVisual(accountMode, accountRole);
+        const photo = $('.auth-photo img');
+        if (photo) { photo.src = visual.image; photo.alt = visual.alt; }
+        $('[data-auth-photo-title]').textContent = visual.title;
+        $('[data-auth-photo-caption]').textContent = visual.caption;
+        $('[data-auth-photo-index]').textContent = visual.index;
+        if (fields && accountRole !== 'agency') {
+          fields.querySelectorAll('[data-auth-error]').forEach((node) => { node.textContent = ''; });
+          fields.querySelectorAll('[aria-invalid="true"]').forEach((node) => node.removeAttribute('aria-invalid'));
+          if (!form.querySelector('[aria-invalid="true"]')) $('#authMsg').innerHTML = '';
+        }
       });
     }
     if (name === 'contact') $('#contactForm')?.addEventListener('submit', sendContact);
@@ -863,18 +918,28 @@
 
   const listingLocation = (x) => `${districtLabel(x?.district)}, Kabul`;
 
-  function dropdown(name, label, items, selected) {
+  function dropdown(name, label, items, selected, options = {}) {
     const cur = items.find((i) => i.value === selected) || items[0];
-    const id = `dd-${name}-${Math.random().toString(36).slice(2, 8)}`;
-    return `<div class="sf" id="${id}" data-dd>
-      <span class="sf-label">${label}</span>
-      <input type="hidden" name="${name}" value="${esc(cur.value)}">
-      <button type="button" class="dd-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="dd-label">${esc(cur.text)}</span><span class="dd-chev" aria-hidden="true"></span></button>
-      <div class="dd-menu" role="listbox" aria-label="${label}">
+    const id = options.rootId || `dd-${name}-${Math.random().toString(36).slice(2, 8)}`;
+    const formControl = Boolean(options.form);
+    const errorId = options.errorId || '';
+    return `<div class="${formControl ? 'form-dropdown' : 'sf'}" id="${id}" data-dd>
+      ${formControl ? '' : `<span class="sf-label">${label}</span>`}
+      <input type="hidden"${options.inputId ? ` id="${options.inputId}"` : ''} name="${name}" value="${esc(cur.value)}">
+      <button type="button"${options.triggerId ? ` id="${options.triggerId}"` : ''} class="dd-trigger${formControl ? ' form-dd-trigger' : ''}" aria-label="${esc(label)}" aria-haspopup="listbox" aria-expanded="false" aria-controls="${id}-menu"${options.invalid ? ' aria-invalid="true"' : ''}${errorId ? ` aria-describedby="${errorId}"` : ''}><span class="dd-label">${esc(cur.text)}</span><span class="dd-chev" aria-hidden="true"></span></button>
+      <div class="dd-menu" id="${id}-menu" role="listbox" aria-label="${esc(label)}">
         <p class="dd-head">${label}</p>
         ${items.map((i, n) => `<button type="button" class="dd-opt${i.value === cur.value ? ' is-on' : ''}" role="option" aria-selected="${i.value === cur.value}" data-value="${esc(i.value)}" data-label="${esc(i.text)}" style="--i:${n}"><span class="dd-idx">${esc(i.idx || '')}</span><span class="dd-text">${esc(i.text)}</span><span class="dd-check" aria-hidden="true"></span></button>`).join('')}
       </div>
     </div>`;
+  }
+
+  function formDropdown(name, label, items, selected, error = '') {
+    const errorId = `dd-${name}-error`;
+    return `<div class="field"><span class="label">${label}</span>${dropdown(name, label, items, selected, {
+      form: true, rootId: `dd-${name}-field`, inputId: `f-${name}`, triggerId: `f-${name}-trigger`,
+      errorId: error ? errorId : '', invalid: Boolean(error),
+    })}${error ? `<small class="error" id="${errorId}">${esc(error)}</small>` : ''}</div>`;
   }
 
   function searchBar(f = {}, opts = {}) {
@@ -959,9 +1024,12 @@
   }
   function chooseDD(opt) {
     const dd = opt.closest('[data-dd]') || opt.closest('.dd-menu')?._owner;
+    if (!dd) return;
+    const menu = dd._menu || dd.querySelector('.dd-menu');
     const input = dd.querySelector('input[type="hidden"]');
+    if (!input) return;
     input.value = opt.dataset.value;
-    dd.querySelectorAll('.dd-opt').forEach((o) => {
+    menu?.querySelectorAll('.dd-opt').forEach((o) => {
       const on = o === opt;
       o.classList.toggle('is-on', on);
       o.setAttribute('aria-selected', String(on));
@@ -1253,7 +1321,7 @@
         <p class="lead">${t('contact.lead')}</p>
       </div>
       <form id="contactForm" class="stack" novalidate>
-        <label class="field"><span class="label">${t('contact.topic')}</span><select name="topic"><option>${t('contact.finding')}</option><option>${t('contact.prices')}</option><option>${t('contact.publishing')}</option><option>${t('contact.privacy')}</option><option>${t('contact.other')}</option></select></label>
+        ${formDropdown('topic', t('contact.topic'), [t('contact.finding'), t('contact.prices'), t('contact.publishing'), t('contact.privacy'), t('contact.other')].map((text) => ({ value: text, text })), t('contact.finding'))}
         <label class="field"><span class="label">${t('contact.message')}</span><textarea name="message" rows="6" required minlength="12" placeholder="${t('contact.placeholder')}"></textarea><small class="error" id="contactError"></small></label>
         <button class="btn btn-ink" type="submit">${t('contact.send')}</button>
       </form>
@@ -1261,8 +1329,14 @@
   }
 
   /* ---------- Account ---------- */
-  const fieldHTML = (name, label, type, placeholder, autocomplete) =>
-    `<label class="field"><span class="label">${label}</span><input name="${name}" type="${type}" placeholder="${esc(placeholder)}" autocomplete="${autocomplete}" required></label>`;
+  const authFieldHTML = (name, label, type, placeholder, autocomplete) =>
+    `<label class="field"><span class="label">${label}</span><input id="auth-${name}" name="${name}" type="${type}" placeholder="${esc(placeholder)}" autocomplete="${autocomplete}" aria-describedby="auth-${name}-error" required><small class="error auth-field-error" id="auth-${name}-error" data-auth-error="${name}" aria-live="polite"></small></label>`;
+
+  function authVisual(mode, role) {
+    if (mode === 'login') return { image: IMG.kabul, alt: 'Kabul hillside homes at dusk', title: 'Welcome home.', caption: 'Find a place that feels right.', index: '01' };
+    if (role === 'agency') return { image: 'images/listings/kabul-apartment.jpg', alt: 'Apartment homes in Kabul', title: 'Room to grow.', caption: 'Bring your property portfolio together.', index: '03' };
+    return { image: 'images/listings/kabul-house.jpg', alt: 'A residential home in Kabul', title: 'Share a home.', caption: 'Introduce your home to its next owner.', index: '02' };
+  }
 
   function account(r) {
     const modeParam = r?.params.get('mode');
@@ -1272,9 +1346,14 @@
     if (roleParam === 'agency' || roleParam === 'individual') accountRole = roleParam;
     const login = accountMode === 'login';
     const agency = accountRole === 'agency';
+    const visual = authVisual(accountMode, accountRole);
     return `
     <section class="auth">
-      <figure class="auth-photo"><img src="${IMG.kabul}" alt="The city of Kabul, its hillside homes and streets"></figure>
+      <figure class="auth-photo">
+        <img src="${visual.image}" alt="${visual.alt}" fetchpriority="high">
+        <figcaption class="auth-photo-copy"><p class="kicker">EMARAT PROPERTIES <span>· KABUL</span></p><h2 data-auth-photo-title>${visual.title}</h2><p data-auth-photo-caption>${visual.caption}</p></figcaption>
+        <span class="auth-photo-index"><span data-auth-photo-index>${visual.index}</span><i></i>03</span>
+      </figure>
       <div class="auth-form">
         <div class="seg" role="group" aria-label="Account">
           <button type="button" class="${login ? 'on' : ''}" aria-pressed="${login}" data-action="account-mode" data-mode="login">${t('account.signin')}</button>
@@ -1288,16 +1367,16 @@
             <label><input type="radio" name="role" value="individual" ${agency ? '' : 'checked'}><span>${t('account.individual')}</span></label>
             <label><input type="radio" name="role" value="agency" ${agency ? 'checked' : ''}><span>${t('account.agency')}</span></label>
           </div></div>`}
-          ${login ? '' : fieldHTML('name', t('account.name'), 'text', 'Your name', 'name')}
-          ${fieldHTML('email', t('account.email'), 'email', 'you@email.com', 'email')}
-          ${fieldHTML('password', t('account.password'), 'password', login ? '' : 'At least 8 characters', login ? 'current-password' : 'new-password')}
-          ${login ? '' : fieldHTML('confirm', t('account.confirm'), 'password', '', 'new-password')}
-          <div class="agency-fields" data-agency-fields ${agency ? '' : 'hidden'}>
+          ${login ? '' : authFieldHTML('name', t('account.name'), 'text', 'Your name', 'name')}
+          ${authFieldHTML('email', t('account.email'), 'email', 'you@email.com', 'email')}
+          ${authFieldHTML('password', t('account.password'), 'password', login ? '' : 'At least 8 characters', login ? 'current-password' : 'new-password')}
+          ${login ? '' : authFieldHTML('confirm', t('account.confirm'), 'password', '', 'new-password')}
+          <div class="agency-fields" data-agency-fields ${!login && agency ? '' : 'hidden'}>
             <div class="agency-note">${t('account.agencyNote')}</div>
-            ${fieldHTML('agencyName', t('account.agencyName'), 'text', 'Enter your agency name', 'organization')}
-            ${fieldHTML('license', t('account.license'), 'text', 'Enter registration number', 'off')}
-            ${fieldHTML('phone', t('account.phone'), 'tel', '+93 and your office number', 'tel')}
-            <label class="field"><span class="label">${t('account.officeDistrict')}</span><select name="officeDistrict">${DISTRICTS.map((d) => `<option value="${d}">${districtLabel(d)}</option>`).join('')}</select></label>
+            ${authFieldHTML('agencyName', t('account.agencyName'), 'text', 'Enter your agency name', 'organization')}
+            ${authFieldHTML('license', t('account.license'), 'text', 'Enter registration number', 'off')}
+            ${authFieldHTML('phone', t('account.phone'), 'tel', '+93 and your office number', 'tel')}
+            <div class="field"><span class="label">${t('account.officeDistrict')}</span>${dropdown('officeDistrict', t('account.officeDistrict'), DISTRICTS.map((d) => ({ value: d, text: districtLabel(d) })), DISTRICTS[0], { form: true, rootId: 'dd-officeDistrict-field', inputId: 'auth-officeDistrict', triggerId: 'auth-officeDistrict-trigger' })}<small class="error auth-field-error" id="auth-officeDistrict-error" data-auth-error="officeDistrict" aria-live="polite"></small></div>
             <label class="field"><span class="label">${t('account.agencyAbout')}</span><textarea name="agencyAbout" rows="3" placeholder="${t('account.agencyAboutPh')}"></textarea></label>
           </div>
           <button class="btn btn-ink btn-block" type="submit">${login ? t('account.signin') : t('account.create')}</button>
@@ -1307,16 +1386,40 @@
     </section>`;
   }
 
+  function showAuthErrors(form, errors, summary = t('account.error.fix')) {
+    form.querySelectorAll('[data-auth-error]').forEach((node) => { node.textContent = ''; });
+    form.querySelectorAll('[aria-invalid="true"]').forEach((node) => node.removeAttribute('aria-invalid'));
+    Object.entries(errors).forEach(([name, message]) => {
+      let control = form.querySelector(`[name="${name}"]`);
+      if (control?.type === 'hidden') control = control.closest('[data-dd]')?.querySelector('.dd-trigger') || control;
+      const messageNode = form.querySelector(`[data-auth-error="${name}"]`);
+      control?.setAttribute('aria-invalid', 'true');
+      if (messageNode?.id) control?.setAttribute('aria-describedby', messageNode.id);
+      if (messageNode) messageNode.textContent = message;
+    });
+    $('#authMsg').innerHTML = Object.keys(errors).length ? notice(esc(summary), 'error') : '';
+    form.querySelector('[aria-invalid="true"]')?.focus();
+  }
+
   function handleAuth(e) {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     const email = String(fd.get('email') || '').trim().toLowerCase();
     const password = String(fd.get('password') || '');
-    const fail = (message) => { $('#authMsg').innerHTML = notice(message, 'error'); };
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     if (accountMode === 'login') {
+      const errors = {};
+      if (!emailValid) errors.email = t('account.error.email');
+      if (!password) errors.password = t('account.error.password');
+      if (Object.keys(errors).length) return showAuthErrors(form, errors);
       const u = state.users.find((x) => x.email === email && x.password === password);
-      if (!u) return fail('Email or password is not right. Check both and try again.');
+      if (!u) {
+        const invalid = t('account.error.login');
+        return showAuthErrors(form, { email: invalid, password: invalid }, invalid);
+      }
+      showAuthErrors(form, {});
       return signIn(u);
     }
     const name = String(fd.get('name') || '').trim();
@@ -1324,18 +1427,22 @@
     const role = String(fd.get('role') || 'individual') === 'agency' ? 'agency' : 'individual';
     const agencyName = String(fd.get('agencyName') || '').trim();
     const license = String(fd.get('license') || '').trim();
-    if (!name) return fail('Add your name.');
-    if (role === 'agency' && !agencyName) return fail('Add the name of your agency.');
-    if (role === 'agency' && !license) return fail('Add your agency license or registration number.');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail('Enter a valid email address.');
-    if (password.length < 8) return fail('Use at least 8 characters for your password.');
-    if (password !== confirm) return fail('The passwords do not match.');
-    if (state.users.some((x) => x.email === email)) return fail('An account with this email already exists. Sign in instead.');
+    const phone = String(fd.get('phone') || '').trim();
+    const errors = {};
+    if (name.length < 2) errors.name = t('account.error.name');
+    if (role === 'agency' && !agencyName) errors.agencyName = t('account.error.agency');
+    if (role === 'agency' && !license) errors.license = t('account.error.license');
+    if (role === 'agency' && (phone.replace(/\D/g, '').length < 7 || phone.replace(/\D/g, '').length > 15)) errors.phone = t('account.error.phone');
+    if (!emailValid) errors.email = t('account.error.email');
+    if (password.length < 8) errors.password = t('account.error.password');
+    if (password !== confirm) errors.confirm = t('account.error.confirm');
+    if (state.users.some((x) => x.email === email)) errors.email = t('account.error.duplicate');
+    if (Object.keys(errors).length) return showAuthErrors(form, errors);
     const u = {
       id: `pub-${Math.random().toString(36).slice(2, 10)}`, name, email, password, role,
       ...(role === 'agency' ? {
         agencyName, license,
-        phone: String(fd.get('phone') || '').trim(),
+        phone,
         officeDistrict: String(fd.get('officeDistrict') || '').trim(),
         about: String(fd.get('agencyAbout') || '').trim(),
       } : {}),
@@ -1439,12 +1546,12 @@
   }
 
   function selectField(name, label, options, value, err, empty) {
-    const id = `f-${name}`;
-    return `<div class="field"><label for="${id}"><span class="label">${label}</span></label><select id="${id}" name="${name}"${err ? ' aria-invalid="true"' : ''}><option value="">${empty}</option>${options.map((o) => {
+    const choices = [{ value: '', text: empty }, ...options.map((o) => {
       const v = typeof o === 'string' ? o : o.value;
       const txt = typeof o === 'string' ? o : o.label;
-      return `<option value="${esc(v)}" ${v === value ? 'selected' : ''}>${esc(txt)}</option>`;
-    }).join('')}</select>${err ? `<small class="error">${esc(err)}</small>` : ''}</div>`;
+      return { value: v, text: txt };
+    })];
+    return formDropdown(name, label, choices, value, err);
   }
 
   function editor(r) {
@@ -1617,7 +1724,9 @@
       draft.errors = errs;
       if (Object.keys(errs).length) {
         paint('editor');
-        $(`#f-${Object.keys(errs)[0]}`)?.focus();
+        const first = Object.keys(errs)[0];
+        const control = $(`#f-${first}-trigger`) || $(`#f-${first}`);
+        control?.focus();
         return;
       }
       go(draft.id ? `preview/${draft.id}` : 'preview');
