@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#EAE5DF" />
+    <meta
+      name="description"
+      content="Find a home in Kabul by district. Monthly rent and total sale prices, stated plainly."
+    />
+    <title>Kabul Property Finder</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500;600&family=Vazirmatn:wght@300..800&family=Noto+Naskh+Arabic:wght@400..700&display=swap"
+    />
+    <link rel="stylesheet" href="styles.css?v=20261110c" />
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <span class="orb orb-a"></span>
+      <span class="orb orb-b"></span>
+      <span class="orb orb-c"></span>
+    </div>
+    <div class="progress" aria-hidden="true"><span></span></div>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" id="siteHeader">
+      <div class="hdr-inner">
+        <a class="brand" href="#home" aria-label="Kabul Property Finder, home">
+          <img class="brand-mark" src="favicon.svg" alt="" width="34" height="34" />
+          <span class="brand-name">Kabul Property Finder</span>
+        </a>
+        <nav class="nav" id="siteNav" aria-label="Main">
+          <a href="#listings" data-nav="listings" data-i18n="nav.homes">Homes</a>
+          <a href="#about" data-nav="about" data-i18n="nav.about">About</a>
+          <a href="#contact" data-nav="contact" data-i18n="nav.contact">Contact</a>
+          <a href="#moderation" data-nav="moderation" data-admin-link data-i18n="nav.moderation" hidden>Moderation</a>
+          <a class="nav-cta-m" href="#editor" data-i18n="nav.post">Post a listing</a>
+        </nav>
+        <div class="header-end">
+          <div class="hdr-tools">
+            <button class="icon-btn hdr-search" type="button" data-action="search" data-i18n-aria="nav.search" aria-label="Search homes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            </button>
+            <select class="lang-select" id="langSelect" aria-label="Language">
+              <option value="en">EN</option>
+              <option value="fa">دری</option>
+              <option value="ps">پښتو</option>
+            </select>
+            <button class="icon-btn theme-toggle" type="button" data-action="theme" aria-label="Switch to dark mode">
+              <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5Z"/></svg>
+              <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            </button>
+          </div>
+          <div id="accountSlot" class="acct"></div>
+          <a class="btn btn-ink hdr-cta" href="#editor" data-i18n="nav.post">Post a listing</a>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu"><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1"><div id="app"></div></main>
+
+    <footer class="site-footer">
+      <span>Kabul Property Finder</span>
+      <nav aria-label="Footer">
+        <a href="#listings" data-i18n="nav.homes">Homes</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <a href="#moderation" data-i18n="nav.moderation">Moderation</a>
+      </nav>
+    </footer>
+
+    <dialog class="dialog search-dialog" id="searchDialog" aria-label="Search homes">
+      <div class="dialog-inner" id="searchDialogBody"></div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="app.js?v=20261110c" defer></script>
+  </body>
+</html>
