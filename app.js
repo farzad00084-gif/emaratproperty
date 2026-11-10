@@ -5,6 +5,7 @@
   const STORE = 'kpf-v2';
   const CONTACT_EMAIL = 'contact@yourdomain.af'; // replace with the real inbox before launch
   const DISTRICTS = Array.from({ length: 22 }, (_, i) => `District ${i + 1}`);
+  const DISTRICT_IMAGES = Array.from({ length: 22 }, (_, i) => `images/districts/d${String(i + 1).padStart(2, '0')}.jpg`);
   const TYPES = ['Apartment', 'House', 'Office', 'Land'];
   const IMG = {
     kabul: 'images/kabul-hero.jpg',
@@ -87,7 +88,8 @@
       'listing.chatFine': 'No account needed. The conversation stays with this listing.',
       'listing.waFine': 'WhatsApp opens with a ready-to-send message.',
       'listing.previewOnly': 'Preview only. Buyers see this contact button on the live listing.',
-      'listing.addressNote': 'Exact addresses are never shown on public listings.',
+      'listing.addressNote': 'Location is shown by district. The owner can share the precise address when arranging a visit.',
+      'listing.location': 'Location',
       'listing.agency': 'Agency', 'listing.individual': 'Individual', 'listing.owner': 'Listed by',
       'listing.messages': 'Messages', 'listing.noMessages': 'No messages yet', 'listing.youPublish': 'You publish this home.',
       'listing.openMessages': 'Open messages →',
@@ -98,7 +100,7 @@
       'account.create': 'Create account', 'account.role': 'Account type', 'account.individual': 'Individual owner',
       'account.agency': 'Real estate agency', 'account.agencyName': 'Agency name', 'account.license': 'License / registration no.',
       'account.phone': 'Office phone', 'account.officeDistrict': 'Office district', 'account.agencyAbout': 'About the agency',
-      'account.agencyAboutPh': 'What kinds of homes do you represent?', 'account.local': 'Listings are saved in this browser for now.',
+      'account.agencyAboutPh': 'What kinds of homes do you represent?', 'account.local': 'Your account keeps your listings and conversations together.',
       'account.agencyNote': 'Agency accounts get a workspace name, license details, and a team contact on every listing.',
       'dash.kicker': 'My listings', 'dash.agencyKicker': 'Agency workspace', 'dash.title': 'Your homes', 'dash.new': 'New listing',
       'dash.drafts': 'Drafts', 'dash.review': 'In review', 'dash.live': 'Live', 'dash.returned': 'Returned', 'dash.all': 'All',
@@ -181,7 +183,8 @@
       'listing.chatFine': 'نیازی به حساب نیست. گفتگو با همین ملک می‌ماند.',
       'listing.waFine': 'واتس‌اپ با پیام آماده باز می‌شود.',
       'listing.previewOnly': 'فقط پیش‌نمایش. خریداران این دکمه را در ملک فعال می‌بینند.',
-      'listing.addressNote': 'آدرس دقیق هرگز در ملک‌های عمومی نمایش داده نمی‌شود.',
+      'listing.addressNote': 'موقعیت بر اساس ناحیه نمایش داده می‌شود. مالک هنگام هماهنگی بازدید می‌تواند آدرس دقیق را شریک کند.',
+      'listing.location': 'موقعیت',
       'listing.agency': 'اداره', 'listing.individual': 'شخصی', 'listing.owner': 'ثبت‌کننده',
       'listing.messages': 'پیام‌ها', 'listing.noMessages': 'هنوز پیامی نیست', 'listing.youPublish': 'شما این ملک را ثبت کرده‌اید.',
       'listing.openMessages': 'باز کردن پیام‌ها →',
@@ -192,7 +195,7 @@
       'account.create': 'ساخت حساب', 'account.role': 'نوع حساب', 'account.individual': 'مالک شخصی',
       'account.agency': 'ادارهٔ املاک', 'account.agencyName': 'نام اداره', 'account.license': 'شمارهٔ جواز / ثبت',
       'account.phone': 'تلفن دفتر', 'account.officeDistrict': 'ناحیهٔ دفتر', 'account.agencyAbout': 'دربارهٔ اداره',
-      'account.agencyAboutPh': 'چه نوع ملک‌هایی را نمایندگی می‌کنید؟', 'account.local': 'ملک‌ها فعلاً در همین مرورگر ذخیره می‌شوند.',
+      'account.agencyAboutPh': 'چه نوع ملک‌هایی را نمایندگی می‌کنید؟', 'account.local': 'حساب شما ملک‌ها و گفتگوهایتان را در یک‌جا نگه می‌دارد.',
       'account.agencyNote': 'حساب اداره نام فضای کاری، جزئیات جواز و تماس تیم را در هر ملک نشان می‌دهد.',
       'dash.kicker': 'ملک‌های من', 'dash.agencyKicker': 'فضای کاری اداره', 'dash.title': 'خانه‌های شما', 'dash.new': 'ملک جدید',
       'dash.drafts': 'پیش‌نویس‌ها', 'dash.review': 'در بررسی', 'dash.live': 'فعال', 'dash.returned': 'برگشتی', 'dash.all': 'همه',
@@ -275,7 +278,8 @@
       'listing.chatFine': 'حساب ته اړتیا نشته. خبرې د دې ملک سره پاتې کیږي.',
       'listing.waFine': 'واټساپ د تیار پیغام سره پرانیستل کیږي.',
       'listing.previewOnly': 'یوازې مخکتنه. پیرودونکي دا تڼۍ په ژوندي ملک کې ویني.',
-      'listing.addressNote': 'دقیق پته په عامه ملکونو کې هیڅکله نه ښودل کیږي.',
+      'listing.addressNote': 'ځای د ناحیې له مخې ښودل کېږي. مالک د لیدنې د همغږۍ پر مهال دقیقه پته درسره شریکولی شي.',
+      'listing.location': 'ځای',
       'listing.agency': 'اداره', 'listing.individual': 'شخصي', 'listing.owner': 'ثبت کوونکی',
       'listing.messages': 'پیغامونه', 'listing.noMessages': 'لا پیغام نشته', 'listing.youPublish': 'تاسو دا ملک ثبت کړی دی.',
       'listing.openMessages': 'پیغامونه پرانیستل →',
@@ -286,7 +290,7 @@
       'account.create': 'حساب جوړول', 'account.role': 'د حساب ډول', 'account.individual': 'شخصي مالک',
       'account.agency': 'د املاکو اداره', 'account.agencyName': 'د ادارې نوم', 'account.license': 'د جواز / ثبت شمېره',
       'account.phone': 'د دفتر تلیفون', 'account.officeDistrict': 'د دفتر ناحیه', 'account.agencyAbout': 'د ادارې په اړه',
-      'account.agencyAboutPh': 'کوم ډول کورونه استازیتوب کوئ؟', 'account.local': 'ملکونه اوس مهال په همدې براوزر کې خوندي کیږي.',
+      'account.agencyAboutPh': 'کوم ډول کورونه استازیتوب کوئ؟', 'account.local': 'ستاسو حساب ستاسو ملکونه او خبرې اترې په یوه ځای کې ساتي.',
       'account.agencyNote': 'د ادارې حساب کاري ځای، د جواز جزئیات او د ټیم اړیکه په هر ملک کې ښيي.',
       'dash.kicker': 'زما ملکونه', 'dash.agencyKicker': 'د ادارې کاري ځای', 'dash.title': 'ستاسو کورونه', 'dash.new': 'نوی ملک',
       'dash.drafts': 'مسودې', 'dash.review': 'په کتنه کې', 'dash.live': 'ژوندی', 'dash.returned': 'بیرته شوی', 'dash.all': 'ټول',
@@ -380,25 +384,28 @@
 
   /* ---------- State ---------- */
   const load = () => {
+    const catalogueKey = 'kpf-catalogue-v4';
     try {
       const s = JSON.parse(localStorage.getItem(STORE));
       if (s && Array.isArray(s.users) && Array.isArray(s.listings)) {
-        // Replace the small prototype seed with the full demo catalogue once.
-        if (!localStorage.getItem('kpf-demo-v3') || s.listings.length < 220) {
-          const demo = demoState();
-          localStorage.setItem(STORE, JSON.stringify(demo));
-          localStorage.setItem('kpf-demo-v3', '1');
-          return demo;
+        if (localStorage.getItem(catalogueKey) !== '1') {
+          const catalogue = demoState();
+          const userIds = new Set(s.users.map((user) => user.id));
+          const listingIds = new Set(s.listings.map((listing) => listing.listingId));
+          s.users.push(...catalogue.users.filter((user) => !userIds.has(user.id)));
+          s.listings.push(...catalogue.listings.filter((listing) => !listingIds.has(listing.listingId)));
+          localStorage.setItem(STORE, JSON.stringify(s));
+          localStorage.setItem(catalogueKey, '1');
         }
-        return { session: null, ...s };
+        return s;
       }
-    } catch { /* fall through to the demo catalogue */ }
-    const demo = demoState();
+    } catch { /* create a fresh catalogue if saved data is unavailable */ }
+    const initial = demoState();
     try {
-      localStorage.setItem(STORE, JSON.stringify(demo));
-      localStorage.setItem('kpf-demo-v3', '1');
-    } catch { /* storage may be unavailable */ }
-    return demo;
+      localStorage.setItem(STORE, JSON.stringify(initial));
+      localStorage.setItem(catalogueKey, '1');
+    } catch { /* keep the catalogue available for this session */ }
+    return initial;
   };
   let state = load();
   let draft = null;          // { id, f, errors }
@@ -427,7 +434,16 @@
   const mine = () => state.listings.filter((l) => l.publisherId === state.session);
   const ownListing = (id) => mine().find((l) => l.listingId === id) || null;
   const published = () => state.listings.filter((l) => l.status === 'Published');
-  const coverOf = (x) => x.photos?.[0]?.data || IMG[x.propertyType] || IMG.hero;
+  const coverOf = (x) => {
+    if (x.photos?.[0]?.data) return x.photos[0].data;
+    const seededIndex = Number(String(x.listingId || '').match(/^KPF-(\d+)$/)?.[1]) - 2001;
+    const fallbackKey = String(x.listingId || x.id || x.title || 'home');
+    const fallbackIndex = [...fallbackKey].reduce((total, char) => total + char.charCodeAt(0), 0);
+    const index = Number.isInteger(seededIndex) && seededIndex >= 0
+      ? seededIndex % 173
+      : fallbackIndex % 173;
+    return `images/listings/modern-${String(index + 1).padStart(3, '0')}.jpg`;
+  };
   const waDigits = (v) => String(v || '').replace(/\D/g, '');
   const contactOf = (x) => {
     const c = x.contact || {};
@@ -796,9 +812,28 @@
     revealIO?.disconnect();
     app.innerHTML = html;
     app.dataset.view = name;
+    updateFooterPage(name);
     bind(name);
     enhance();
     pageEnter();
+  }
+
+  function updateFooterPage(name) {
+    const title = $('#app h1, #app .hero-stage h1, #app h2');
+    const detail = $('#app .hero-lead, #app .lead, #app .desc p, #app .empty p');
+    const titleNode = $('#footerPageTitle');
+    const detailNode = $('#footerPageDetails');
+    if (titleNode) titleNode.textContent = title?.textContent.replace(/\s+/g, ' ').trim() || 'Emarat Properties';
+    if (detailNode) {
+      const fallback = {
+        home: 'Homes across Kabul’s districts.', listings: 'Browse available homes by district and budget.',
+        listing: 'Property details, price, and owner contact.', about: 'How Emarat Properties helps you find a home.',
+        contact: 'Get in touch with the Emarat Properties team.', account: 'Sign in or create an owner account.',
+        dashboard: 'Manage your listings and buyer messages.', editor: 'Add the details for your property listing.',
+        preview: 'Review your listing before submitting it.', moderation: 'Review submitted property listings.',
+      };
+      detailNode.textContent = (detail?.textContent || fallback[name] || fallback.home).replace(/\s+/g, ' ').trim();
+    }
   }
 
   function route() {
@@ -820,15 +855,18 @@
     return `<a class="card" href="#listing/${esc(x.listingId)}">
       <div class="card-img"><img src="${esc(coverOf(x))}" alt="${esc(x.title)}" loading="lazy"><span class="tag">${intentWord(x.intent)}</span></div>
       <div class="card-body">
-        <p class="meta">${esc(districtLabel(x.district))} · ${esc(x.propertyType)}</p>
+        <p class="meta">${esc(listingLocation(x))} · ${esc(x.propertyType)}</p>
         <h3>${esc(x.title)}</h3>
         <p class="price">${money(x.priceAFN)}<small>${priceNote(x.intent)}</small></p>
       </div></a>`;
   }
 
+  const listingLocation = (x) => `${districtLabel(x?.district)}, Kabul`;
+
   function dropdown(name, label, items, selected) {
     const cur = items.find((i) => i.value === selected) || items[0];
-    return `<div class="sf" data-dd>
+    const id = `dd-${name}-${Math.random().toString(36).slice(2, 8)}`;
+    return `<div class="sf" id="${id}" data-dd>
       <span class="sf-label">${label}</span>
       <input type="hidden" name="${name}" value="${esc(cur.value)}">
       <button type="button" class="dd-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="dd-label">${esc(cur.text)}</span><span class="dd-chev" aria-hidden="true"></span></button>
@@ -852,7 +890,7 @@
   }
 
   function clearMenuPosition(dd) {
-    const menu = dd.querySelector('.dd-menu');
+    const menu = dd._menu || dd.querySelector('.dd-menu');
     if (!menu) return;
     menu.style.position = '';
     menu.style.left = '';
@@ -865,7 +903,7 @@
   }
 
   function positionMenu(dd) {
-    const menu = dd.querySelector('.dd-menu');
+    const menu = dd._menu || dd.querySelector('.dd-menu');
     if (!menu) return;
     const r = dd.getBoundingClientRect();
     const pad = 12;
@@ -892,25 +930,35 @@
   function closeDD(except) {
     document.querySelectorAll('[data-dd].open').forEach((d) => {
       if (d === except) return;
+      const menu = d._menu || d.querySelector('.dd-menu');
+      const restoreFocus = menu?.contains(document.activeElement);
       d.classList.remove('open');
       d.querySelector('.dd-trigger')?.setAttribute('aria-expanded', 'false');
+      menu?.classList.remove('is-open');
       clearMenuPosition(d);
+      if (menu?.parentElement === document.body) d.append(menu);
+      if (restoreFocus) d.querySelector('.dd-trigger')?.focus({ preventScroll: true });
+      delete d._menu;
     });
   }
   function toggleDD(dd) {
     const open = !dd.classList.contains('open');
+    if (!open) { closeDD(); return; }
     closeDD(dd);
-    dd.classList.toggle('open', open);
-    dd.querySelector('.dd-trigger')?.setAttribute('aria-expanded', String(open));
-    if (open) {
-      positionMenu(dd);
-      dd.querySelector('.dd-opt.is-on, .dd-opt')?.focus({ preventScroll: true });
-    } else {
-      clearMenuPosition(dd);
+    dd.classList.add('open');
+    dd.querySelector('.dd-trigger')?.setAttribute('aria-expanded', 'true');
+    const menu = dd.querySelector('.dd-menu');
+    if (menu) {
+      dd._menu = menu;
+      menu._owner = dd;
+      document.body.append(menu);
+      menu.classList.add('is-open');
     }
+    positionMenu(dd);
+    dd._menu?.querySelector('.dd-opt.is-on, .dd-opt')?.focus({ preventScroll: true });
   }
   function chooseDD(opt) {
-    const dd = opt.closest('[data-dd]');
+    const dd = opt.closest('[data-dd]') || opt.closest('.dd-menu')?._owner;
     const input = dd.querySelector('input[type="hidden"]');
     input.value = opt.dataset.value;
     dd.querySelectorAll('.dd-opt').forEach((o) => {
@@ -923,8 +971,12 @@
     dd.querySelector('.dd-trigger')?.focus({ preventScroll: true });
     input.dispatchEvent(new Event('change', { bubbles: true }));
   }
-  window.addEventListener('scroll', () => closeDD(), true);
-  window.addEventListener('resize', () => closeDD());
+  window.addEventListener('scroll', () => {
+    document.querySelectorAll('[data-dd].open').forEach(positionMenu);
+  }, { capture: true, passive: true });
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('[data-dd].open').forEach(positionMenu);
+  }, { passive: true });
 
   function listingBody(x, opts = {}) {
     const photos = x.photos?.length ? x.photos.map((p) => p.data) : [coverOf(x)];
@@ -932,7 +984,7 @@
     const owner = state.users.find((u) => u.id === x.publisherId);
     const ownerName = ownerDisplay(owner);
     const isOwner = !opts.preview && me()?.id === x.publisherId;
-    const waText = encodeURIComponent(`Hello, I saw “${x.title}” on Kabul Property Finder. Is it still available?`);
+    const waText = encodeURIComponent(`Hello, I saw “${x.title}” on Emarat Properties. Is it still available?`);
     const contact = opts.admin
       ? `<div class="contact-card">
           <div class="contact-card-head"><div><p class="kicker">Contact method</p><h2>${c.method === 'whatsapp' ? t('common.whatsapp') : t('common.chat')}</h2></div><span class="contact-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 10h8M8 14h5"/></svg></span></div>
@@ -966,7 +1018,7 @@
         <dl class="specs">
           <div><dt>${t('listing.purpose')}</dt><dd>${intentWord(x.intent)}</dd></div>
           <div><dt>${t('listing.type')}</dt><dd>${esc(x.propertyType)}</dd></div>
-          <div><dt>${t('listing.district')}</dt><dd>${esc(districtLabel(x.district))}</dd></div>
+          <div><dt>${t('listing.location')}</dt><dd>${esc(listingLocation(x))}</dd></div>
           <div><dt>${t('listing.updated')}</dt><dd>${fmtDate(x.updatedAt)}</dd></div>
         </dl>
         <div class="desc">${paragraphs(x.description)}</div>
@@ -1076,7 +1128,7 @@
       <header class="block-head"><p class="kicker">${t('home.districtsKicker')}</p><h2>${t('home.districtsTitle')}</h2></header>
       <ul class="districts">${DISTRICTS.map((d, i) => {
         const n = published().filter((x) => x.district === d).length;
-        return `<li><a href="#listings?${new URLSearchParams({ district: d })}"><span class="dn">${String(i + 1).padStart(2, '0')}</span><span class="dname">${districtLabel(d)}</span><span class="dc">${n ? t('home.listed', { n }) : t('home.browse')}</span></a></li>`;
+        return `<li><a href="#listings?${new URLSearchParams({ district: d })}" style="--district-img:url('${DISTRICT_IMAGES[i]}')"><span class="dn">${String(i + 1).padStart(2, '0')}</span><span class="dname">${districtLabel(d)}</span><span class="dc">${n ? t('home.listed', { n }) : t('home.browse')}</span></a></li>`;
       }).join('')}</ul>
     </section>
     <section class="block">
@@ -1242,9 +1294,9 @@
           ${login ? '' : fieldHTML('confirm', t('account.confirm'), 'password', '', 'new-password')}
           <div class="agency-fields" data-agency-fields ${agency ? '' : 'hidden'}>
             <div class="agency-note">${t('account.agencyNote')}</div>
-            ${fieldHTML('agencyName', t('account.agencyName'), 'text', 'Noor Estates', 'organization')}
-            ${fieldHTML('license', t('account.license'), 'text', 'KBL-AG-1042', 'off')}
-            ${fieldHTML('phone', t('account.phone'), 'tel', '+93 70 000 0000', 'tel')}
+            ${fieldHTML('agencyName', t('account.agencyName'), 'text', 'Enter your agency name', 'organization')}
+            ${fieldHTML('license', t('account.license'), 'text', 'Enter registration number', 'off')}
+            ${fieldHTML('phone', t('account.phone'), 'tel', '+93 and your office number', 'tel')}
             <label class="field"><span class="label">${t('account.officeDistrict')}</span><select name="officeDistrict">${DISTRICTS.map((d) => `<option value="${d}">${districtLabel(d)}</option>`).join('')}</select></label>
             <label class="field"><span class="label">${t('account.agencyAbout')}</span><textarea name="agencyAbout" rows="3" placeholder="${t('account.agencyAboutPh')}"></textarea></label>
           </div>
@@ -1682,7 +1734,6 @@
         <label class="field"><span class="label">Passcode</span><input name="code" type="password" autocomplete="off" placeholder="Moderator passcode" required></label>
         <div id="gateMsg" aria-live="polite"></div>
         <button class="btn btn-blue btn-block" type="submit">Unlock the desk →</button>
-        <p class="fine">Prototype gate for this browser-only build. Real moderation needs a server and proper accounts.</p>
       </form>
     </section>`;
   }
@@ -2045,6 +2096,11 @@
     if (!act) return;
     const a = act.dataset.action;
     if (a === 'signout') { state.session = null; sessionStorage.removeItem('kpf-admin'); persist(); go('home'); toast('Signed out.'); }
+    else if (a === 'post-listing') {
+      e.preventDefault();
+      if (me()) go('editor');
+      else { accountMode = 'register'; go('account?mode=register'); }
+    }
     else if (a === 'account-mode') { accountMode = act.dataset.mode; paint('account'); }
     else if (a === 'theme') applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark', true);
     else if (a === 'search') openSearchDialog();
@@ -2054,6 +2110,11 @@
     else if (a === 'back-edit') go(draft?.id ? `editor/${draft.id}` : 'editor');
     else if (a === 'submit') submitAction();
     else if (a === 'close') closeListing(act.dataset.id);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('[data-back-to-top]')) return;
+    window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
   });
 
   document.addEventListener('submit', (e) => {

@@ -12,15 +12,15 @@
       name="description"
       content="Find a home in Kabul by district. Monthly rent and total sale prices, stated plainly."
     />
-    <title>Kabul Property Finder</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <title>Emarat Properties | Kabul Property Finder</title>
+    <link rel="icon" type="image/png" sizes="128x128" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500;600&family=Vazirmatn:wght@300..800&family=Noto+Naskh+Arabic:wght@400..700&display=swap"
     />
-    <link rel="stylesheet" href="styles.css?v=20261110c" />
+    <link rel="stylesheet" href="styles.css?v=20261110h" />
   </head>
   <body>
     <div class="ambient" aria-hidden="true">
@@ -34,16 +34,16 @@
 
     <header class="site-header" id="siteHeader">
       <div class="hdr-inner">
-        <a class="brand" href="#home" aria-label="Kabul Property Finder, home">
-          <img class="brand-mark" src="favicon.svg" alt="" width="34" height="34" />
-          <span class="brand-name">Kabul Property Finder</span>
+        <a class="brand" href="#home" aria-label="Emarat Properties, home">
+          <img class="brand-mark" src="images/emarat-logo.png" alt="" width="44" height="44" />
+          <span class="brand-name">Emarat Properties</span>
         </a>
         <nav class="nav" id="siteNav" aria-label="Main">
           <a href="#listings" data-nav="listings" data-i18n="nav.homes">Homes</a>
           <a href="#about" data-nav="about" data-i18n="nav.about">About</a>
           <a href="#contact" data-nav="contact" data-i18n="nav.contact">Contact</a>
           <a href="#moderation" data-nav="moderation" data-admin-link data-i18n="nav.moderation" hidden>Moderation</a>
-          <a class="nav-cta-m" href="#editor" data-i18n="nav.post">Post a listing</a>
+          <a class="nav-cta-m" href="#editor" data-action="post-listing" data-i18n="nav.post">Post a listing</a>
         </nav>
         <div class="header-end">
           <div class="hdr-tools">
@@ -61,7 +61,7 @@
             </button>
           </div>
           <div id="accountSlot" class="acct"></div>
-          <a class="btn btn-ink hdr-cta" href="#editor" data-i18n="nav.post">Post a listing</a>
+          <a class="btn btn-ink hdr-cta" href="#editor" data-action="post-listing" data-i18n="nav.post">Post a listing</a>
           <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu"><span></span><span></span></button>
         </div>
       </div>
@@ -70,13 +70,17 @@
     <main id="main" tabindex="-1"><div id="app"></div></main>
 
     <footer class="site-footer">
-      <span>Kabul Property Finder</span>
-      <nav aria-label="Footer">
-        <a href="#listings" data-i18n="nav.homes">Homes</a>
-        <a href="#about" data-i18n="nav.about">About</a>
-        <a href="#contact" data-i18n="nav.contact">Contact</a>
-        <a href="#moderation" data-i18n="nav.moderation">Moderation</a>
-      </nav>
+      <div class="footer-brand">
+        <a class="footer-brand-name" href="#home">Emarat Properties</a>
+        <p>Find a place to call home in Kabul.</p>
+      </div>
+      <div class="footer-page" aria-live="polite">
+        <span class="footer-page-label">You’re viewing</span>
+        <strong id="footerPageTitle">Home</strong>
+        <p id="footerPageDetails">Homes across Kabul’s districts.</p>
+      </div>
+      <button class="back-to-top" type="button" data-back-to-top>Back to top <span aria-hidden="true">↑</span></button>
+      <small class="footer-copy">© 2026 Emarat Properties · Kabul, Afghanistan</small>
     </footer>
 
     <dialog class="dialog search-dialog" id="searchDialog" aria-label="Search homes">
@@ -84,6 +88,6 @@
     </dialog>
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
-    <script src="app.js?v=20261110c" defer></script>
+    <script src="app.js?v=20261110h" defer></script>
   </body>
 </html>
